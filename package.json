@@ -1,0 +1,34 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "Like Siri, but for node",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachfey/Liri-Node-App.git"
+  },
+  "keywords": [
+    "liri",
+    "siri",
+    "language",
+    "interpretation",
+    "and",
+    "recognition",
+    "interface"
+  ],
+  "author": "Zach Fey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachfey/Liri-Node-App/issues"
+  },
+  "homepage": "https://github.com/zachfey/Liri-Node-App#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.0.7"
+  }
+}
