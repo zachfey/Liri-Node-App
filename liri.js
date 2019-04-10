@@ -1,27 +1,42 @@
 require('dotenv').config();
 var keys = require("./keys.js");
-// var spotify = new Spotify(keys.spotify);
+var axios = require('axios')
+var Spotify = require('node-spotify-api')
+var spotify = new Spotify(keys.spotify);
+
+var bandsInTown = function(artist){
+    const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+    console.log(queryUrl);
+    axios.get(queryUrl).then(
+        function (response) {
+            console.log(response.data[0]);
+        }
+    );
+}
 
 const input = process.argv
 
-let args = []
-for (let i = 2; i < input.length; i++){
-    args.push(input[i]);
+let arg1 = input[2]
+let arg2 = []
+for (let i = 3; i < input.length; i++){
+    arg2.push(input[i]);
 }
 
 // console.log(args);
 
 // Make it so liri.js can take in one of the following commands:
-console.log(args[0]);
+console.log(arg1 + ' ' + arg2);
 
-if (args[0] === 'concert-this'){
-
-} else if (args[0] === 'spotify-this-song'){
-
-} else if (args[0] === 'movie-this'){
-
-} else if (args[0] === 'do-what-it-says'){
-
+if (arg1 === 'concert-this'){ //TODO: Make this a switch command.
+    console.log(arg2);
+    bandsInTown(arg2);
+    console.log('concert-this')
+} else if (arg1 === 'spotify-this-song'){
+    console.log('spotify-this-song')
+} else if (arg1 === 'movie-this'){
+    console.log('movie-this')
+} else if (arg1 === 'do-what-it-says'){
+    console.log('do-what-it-says')
 } else{
 
 }
