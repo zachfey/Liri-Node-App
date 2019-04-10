@@ -1,6 +1,6 @@
 require('dotenv').config();
-var keys = requie("./keys.js");
-var spotify = new spotify(keys.spotify);
+var keys = require("./keys.js");
+// var spotify = new Spotify(keys.spotify);
 
 const input = process.argv
 
@@ -12,21 +12,19 @@ for (let i = 2; i < input.length; i++){
 // console.log(args);
 
 // Make it so liri.js can take in one of the following commands:
+console.log(args[0]);
 
+if (args[0] === 'concert-this'){
 
-// concert-this
+} else if (args[0] === 'spotify-this-song'){
 
+} else if (args[0] === 'movie-this'){
 
-// spotify-this-song
+} else if (args[0] === 'do-what-it-says'){
 
+} else{
 
-// movie-this
-
-
-// do-what-it-says
-
-
-
+}
 
 
 // What Each Command Should Do
