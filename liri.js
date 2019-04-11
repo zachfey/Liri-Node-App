@@ -4,22 +4,48 @@ var axios = require('axios')
 var Spotify = require('node-spotify-api')
 var spotify = new Spotify(keys.spotify);
 
-var bandsInTown = function(artist){
+var bandsInTown = function (artist) {
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
     console.log(queryUrl);
     axios.get(queryUrl).then(
         function (response) {
-            console.log(response.data[0]);
+            console.log(response.data[0].venue.name);
+            console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
+            console.log(response.data[0].datetime); //TODO format as MM/DD/YY
+
+            // for (let i = 0; i < 5; i++){ //TODO list first 5 results
+            //     console.log(resopnse.data[i].Venue)
+            // }
         }
     );
+}
+
+var spotifyLookup = function (track) {
+    spotify.search({
+        type: 'track',
+        query: track
+    }, function (err, data) {
+        if (err) {
+            console.log('artist: Ace of Base')
+            console.log('song: The Sign')
+            console.log('album: The Sign (US Album) [Remastered]')
+            console.log('preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982')
+            return console.log('Error occurred: ' + err);
+        }
+
+        console.log('artist: ' + data.tracks.items[0].artists[0].name);
+        console.log('song: ' + data.tracks.items[0].name);
+        console.log('album: ' + data.tracks.items[0].album.name);
+        console.log('preview: ' + data.tracks.items[0].preview_url);
+    });
 }
 
 const input = process.argv
 
 let arg1 = input[2]
-let arg2 = []
-for (let i = 3; i < input.length; i++){
-    arg2.push(input[i]);
+let arg2 = input[3]
+for (let i = 4; i < input.length; i++) {
+    arg2 += ' ' + input[i];
 }
 
 // console.log(args);
@@ -27,41 +53,26 @@ for (let i = 3; i < input.length; i++){
 // Make it so liri.js can take in one of the following commands:
 console.log(arg1 + ' ' + arg2);
 
-if (arg1 === 'concert-this'){ //TODO: Make this a switch command.
-    console.log(arg2);
+if (arg1 === 'concert-this') { //TODO: Make this a switch command.
+
     bandsInTown(arg2);
-    console.log('concert-this')
-} else if (arg1 === 'spotify-this-song'){
-    console.log('spotify-this-song')
-} else if (arg1 === 'movie-this'){
+
+} else if (arg1 === 'spotify-this-song') {
+    console.log('spotifying.....')
+    spotifyLookup(arg2);
+
+} else if (arg1 === 'movie-this') {
     console.log('movie-this')
-} else if (arg1 === 'do-what-it-says'){
+
+} else if (arg1 === 'do-what-it-says') {
     console.log('do-what-it-says')
-} else{
+
+} else {
 
 }
 
 
 // What Each Command Should Do
-
-
-// node liri.js concert-this <artist/band name here>
-
-
-// This will search the Bands in Town Artist Events API ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp") for an artist and render the following information about each event to the terminal:
-
-
-// Name of the venue
-
-
-// Venue location
-
-
-// Date of the Event (use moment to format this as "MM/DD/YYYY")
-
-
-
-
 
 
 // node liri.js spotify-this-song '<song name here>'
@@ -82,29 +93,7 @@ if (arg1 === 'concert-this'){ //TODO: Make this a switch command.
 // The album that the song is from
 
 
-
-
 // If no song is provided then your program will default to "The Sign" by Ace of Base.
-
-
-// You will utilize the node-spotify-api package in order to retrieve song information from the Spotify API.
-
-
-// The Spotify API requires you sign up as a developer to generate the necessary credentials. You can follow these steps in order to generate a client id and client secret:
-
-
-// Step One: Visit https://developer.spotify.com/my-applications/#!/
-
-
-// Step Two: Either login to your existing Spotify account or create a new one (a free account is fine) and log in.
-
-
-// Step Three: Once logged in, navigate to https://developer.spotify.com/my-applications/#!/applications/create to register a new application to be used with the Spotify API. You can fill in whatever you'd like for these fields. When finished, click the "complete" button.
-
-
-// Step Four: On the next screen, scroll down to where you see your client id and client secret. Copy these values down somewhere, you'll need them to use the Spotify API and the node-spotify-api package.
-
-
 
 
 // node liri.js movie-this '<movie name here>'
