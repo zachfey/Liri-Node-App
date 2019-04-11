@@ -12,7 +12,7 @@ var bandsInTown = function (artist) {
         function (response) {
             console.log(response.data[0].venue.name);
             console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
-            console.log(moment(response.data[0].datetime).format('MM/DD/YY')); 
+            console.log(moment(response.data[0].datetime).format('MM/DD/YY'));
 
             // for (let i = 0; i < 5; i++){ //TODO list first 5 results
             //     console.log(resopnse.data[i].Venue)
@@ -41,6 +41,24 @@ var spotifyLookup = function (track) {
     });
 }
 
+var omdbLookup = function (movie) {
+    var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    axios.get(queryUrl).then(
+        function (response) {
+            // console.log(response);
+            console.log('Title: ' + response.data.Title);
+            console.log('Release year: ' + response.data.Year);
+            console.log('IMDB Rating: ' + response.data.Ratings[0].Value)
+            console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value)
+            console.log('Country: ' + response.data.Country);
+            console.log('Language: ' + response.data.Language);
+            console.log('Plot: ' + response.data.Plot);
+            console.log('Actors: ' + response.data.Actors);
+        }
+    );
+}
+
 const input = process.argv
 
 let arg1 = input[2]
@@ -49,13 +67,10 @@ for (let i = 4; i < input.length; i++) {
     arg2 += ' ' + input[i];
 }
 
-// console.log(args);
-
-// Make it so liri.js can take in one of the following commands:
 console.log(arg1 + ' ' + arg2);
 
 if (arg1 === 'concert-this') { //TODO: Make this a switch command.
-
+    console.log('bands in towning.....')
     bandsInTown(arg2);
 
 } else if (arg1 === 'spotify-this-song') {
@@ -63,7 +78,8 @@ if (arg1 === 'concert-this') { //TODO: Make this a switch command.
     spotifyLookup(arg2);
 
 } else if (arg1 === 'movie-this') {
-    console.log('movie-this')
+    console.log('ombding......')
+    omdbLookup(arg2);
 
 } else if (arg1 === 'do-what-it-says') {
     console.log('do-what-it-says')
