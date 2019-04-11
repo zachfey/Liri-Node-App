@@ -3,6 +3,7 @@ var keys = require("./keys.js");
 var axios = require('axios')
 var Spotify = require('node-spotify-api')
 var spotify = new Spotify(keys.spotify);
+var moment = require('moment');
 
 var bandsInTown = function (artist) {
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
@@ -11,7 +12,7 @@ var bandsInTown = function (artist) {
         function (response) {
             console.log(response.data[0].venue.name);
             console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
-            console.log(response.data[0].datetime); //TODO format as MM/DD/YY
+            console.log(moment(response.data[0].datetime).format('MM/DD/YY')); 
 
             // for (let i = 0; i < 5; i++){ //TODO list first 5 results
             //     console.log(resopnse.data[i].Venue)
@@ -74,31 +75,7 @@ if (arg1 === 'concert-this') { //TODO: Make this a switch command.
 
 // What Each Command Should Do
 
-
-// node liri.js spotify-this-song '<song name here>'
-
-
-// This will show the following information about the song in your terminal/bash window
-
-
-// Artist(s)
-
-
-// The song's name
-
-
-// A preview link of the song from Spotify
-
-
-// The album that the song is from
-
-
-// If no song is provided then your program will default to "The Sign" by Ace of Base.
-
-
 // node liri.js movie-this '<movie name here>'
-
-
 // This will output the following information to your terminal/bash window:
 //   * Title of the movie.
 //   * Year the movie came out.
@@ -109,17 +86,9 @@ if (arg1 === 'concert-this') { //TODO: Make this a switch command.
 //   * Plot of the movie.
 //   * Actors in the movie.
 
-
 // If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 
-
 // If you haven't watched "Mr. Nobody," then you should: http://www.imdb.com/title/tt0485947/
-
-
-// It's on Netflix!
-
-
-
 
 // You'll use the axios package to retrieve data from the OMDB API. Like all of the in-class activities, the OMDB API requires an API key. You may use trilogy.
 
