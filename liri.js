@@ -38,17 +38,26 @@ var spotifyLookup = function (track) {
         query: track
     }, function (err, data) {
         if (err) { //default to The Sign by Ace of Base
-            console.log('artist: Ace of Base')
-            console.log('song: The Sign')
-            console.log('album: The Sign (US Album) [Remastered]')
-            console.log('preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982')
+            spotifyLookup('The Sign')
+            // console.log('artist: Ace of Base')
+            // console.log('song: The Sign')
+            // console.log('album: The Sign (US Album) [Remastered]')
+            // console.log('preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982')
             return console.log('Error occurred: ' + err);
         }
-
-        console.log('artist: ' + data.tracks.items[0].artists[0].name);
-        console.log('song: ' + data.tracks.items[0].name);
-        console.log('album: ' + data.tracks.items[0].album.name);
-        console.log('preview: ' + data.tracks.items[0].preview_url);
+        const returnedSong = {
+            Artist: data.tracks.items[0].artists[0].name,
+            Song: data.tracks.items[0].name,
+            Album: data.tracks.items[0].album.name,
+            Preview: data.tracks.items[0].preview_url
+        }
+        // console.log(JSON.stringify(returnedSong,null,2));
+        console.table(returnedSong);
+        
+        // console.log('artist: ' + data.tracks.items[0].artists[0].name);
+        // console.log('song: ' + data.tracks.items[0].name);
+        // console.log('album: ' + data.tracks.items[0].album.name);
+        // console.log('preview: ' + data.tracks.items[0].preview_url);
     });
 }
 
