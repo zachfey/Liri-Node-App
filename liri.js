@@ -12,13 +12,19 @@ var bandsInTown = function (artist) {
     // console.log(queryUrl);
     axios.get(queryUrl).then(
         function (response) {
-            console.log(response.data[0].venue.name);
-            console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
-            console.log(moment(response.data[0].datetime).format('MM/DD/YY'));
 
-            // for (let i = 0; i < 5; i++){ //TODO list first 5 results
-            //     console.log(resopnse.data[i].Venue)
-            // }
+            // console.log(response.data[0].venue.name);
+            // console.log(response.data[0].venue.city + ', ' + response.data[0].venue.region);
+            // console.log(moment(response.data[0].datetime).format('MM/DD/YY'));
+
+            for (let i = 0; i < 5; i++){ //list first 5 results
+                let tourInfo = {
+                    venue: response.data[i].venue.name,
+                    city: response.data[i].venue.city + ', ' + response.data[i].venue.region,
+                    date: moment(response.data[i].datetime).format('MM/DD/YY')
+                }
+                console.log(JSON.stringify(tourInfo,null,2));
+            }
         }
     );
 }
