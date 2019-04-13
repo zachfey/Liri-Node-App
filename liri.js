@@ -4,6 +4,7 @@ var axios = require('axios')
 var Spotify = require('node-spotify-api')
 var spotify = new Spotify(keys.spotify);
 var moment = require('moment');
+var fs = require('fs');
 
 var bandsInTown = function (artist) {
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
@@ -58,7 +59,7 @@ var omdbLookup = function (movie) {
             console.log('Actors: ' + response.data.Actors);
         }
     ).catch(
-        function (err){
+        function (err) {
             console.log('oops');
             // omdbLookup('Mr. Nobody');
             console.log('Title: Mr. Nobody');
@@ -73,6 +74,38 @@ var omdbLookup = function (movie) {
     )
 };
 
+var interpret = function (arg1, arg2) {
+
+
+
+    if (arg1 === 'concert-this') { //TODO: Make this a switch command.
+        console.log('bands in towning.....')
+        bandsInTown(arg2);
+
+    } else if (arg1 === 'spotify-this-song') {
+        console.log('spotifying.....')
+        spotifyLookup(arg2);
+
+    } else if (arg1 === 'movie-this') {
+        console.log('ombding......')
+        omdbLookup(arg2);
+
+    } else if (arg1 === 'do-what-it-says') {
+        console.log('randomizing....')
+        console.log(fs.readFile('random.txt', 'utf8', function (err, data) {
+            if (err) {
+                return console.log('oops')
+            } else
+                arg1 = data.split(',')[0];
+                arg2 = data.split(',')[1];
+                interpret(arg1, arg2);
+        }));
+    } else {
+
+    }
+}
+
+
 const input = process.argv
 
 let arg1 = input[2]
@@ -83,31 +116,12 @@ for (let i = 4; i < input.length; i++) {
 
 console.log(arg1 + ' ' + arg2);
 
-if (arg1 === 'concert-this') { //TODO: Make this a switch command.
-    console.log('bands in towning.....')
-    bandsInTown(arg2);
 
-} else if (arg1 === 'spotify-this-song') {
-    console.log('spotifying.....')
-    spotifyLookup(arg2);
+interpret(arg1, arg2)
 
-} else if (arg1 === 'movie-this') {
-    console.log('ombding......')
-    omdbLookup(arg2);
-
-} else if (arg1 === 'do-what-it-says') {
-    console.log('do-what-it-says')
-
-} else {
-
-}
 
 
 // What Each Command Should Do
-
-
-// If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
-
 
 // node liri.js do-what-it-says
 
