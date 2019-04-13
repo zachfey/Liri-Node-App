@@ -1,15 +1,15 @@
 require('dotenv').config();
-var keys = require("./keys.js");
-var axios = require('axios')
-var Spotify = require('node-spotify-api')
-var spotify = new Spotify(keys.spotify);
-var moment = require('moment');
-var fs = require('fs');
+var keys = require("./keys.js"); //requires the js file which contains the key for the spotify API. That js file will not be uploaded to github
+var Spotify = require('node-spotify-api') //requries the spotify API
+var spotify = new Spotify(keys.spotify); //creates a new Spotify object using the keys in the above file
+var axios = require('axios') //used for the omdb and bandsInTown APIs
+var moment = require('moment'); //used to convert the concert date from badnsInTown API
+var fs = require('fs'); //used to read random.txt in do-what-it-says command
 
 ///////////////////////Function declarations///////////////////////////////////////////////
 var bandsInTown = function (artist) {
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-    console.log(queryUrl);
+    // console.log(queryUrl);
     axios.get(queryUrl).then(
         function (response) {
             console.log(response.data[0].venue.name);
@@ -28,7 +28,7 @@ var spotifyLookup = function (track) {
         type: 'track',
         query: track
     }, function (err, data) {
-        if (err) {
+        if (err) { //default to The Sign by Ace of Base
             console.log('artist: Ace of Base')
             console.log('song: The Sign')
             console.log('album: The Sign (US Album) [Remastered]')
@@ -60,8 +60,8 @@ var omdbLookup = function (movie) {
             console.log('Actors: ' + response.data.Actors);
         }
     ).catch(
-        function (err) {
-            console.log('oops');
+        function (err) { //default to Mr. Nobody
+            console.log('oops: ' + err);
             // omdbLookup('Mr. Nobody');
             console.log('Title: Mr. Nobody');
             console.log('Release year: 2009');
@@ -109,35 +109,18 @@ var interpret = function (arg1, arg2) {
 ///////////////////////////////End function Declarations///////////////////////////////////////
 
 ///////////////////////////////Input parsing////////////////////////////////////////////
-const input = process.argv
+const input = process.argv //takes in all command line arguments
 
-let arg1 = input[2]
-let arg2 = input[3]
+let arg1 = input[2] // the first command line argument
+let arg2 = input[3] //initialize the variable used in the for loop for the rest of hte command line arguments
 for (let i = 4; i < input.length; i++) {
     arg2 += ' ' + input[i];
 }
 
-console.log(arg1 + ' ' + arg2);
+// console.log(arg1 + ' ' + arg2);
 /////////////////////////////End Input Parsing////////////////////////////////////////////
 
 interpret(arg1, arg2)
-
-
-
-// What Each Command Should Do
-
-// node liri.js do-what-it-says
-
-
-// Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-
-
-// It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
-
-
-// Edit the text in random.txt to test out the feature for movie-this and concert-this.
-
-
 
 
 
