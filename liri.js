@@ -33,12 +33,13 @@ var bandsInTown = function (artist) {
 }
 
 var spotifyLookup = function (track) {
+    if(!track){track = 'The Sign Ace of Base'}
     spotify.search({
         type: 'track',
         query: track
     }, function (err, data) {
         if (err) { //default to The Sign by Ace of Base
-            spotifyLookup('The Sign')
+            spotifyLookup('The Sign Ace of Base')
             // console.log('artist: Ace of Base')
             // console.log('song: The Sign')
             // console.log('album: The Sign (US Album) [Remastered]')
@@ -53,7 +54,7 @@ var spotifyLookup = function (track) {
         }
         // console.log(JSON.stringify(returnedSong,null,2));
         console.table(returnedSong);
-        
+
         // console.log('artist: ' + data.tracks.items[0].artists[0].name);
         // console.log('song: ' + data.tracks.items[0].name);
         // console.log('album: ' + data.tracks.items[0].album.name);
@@ -62,12 +63,13 @@ var spotifyLookup = function (track) {
 }
 
 var omdbLookup = function (movie) {
+    if(!movie){movie = 'Mr. Nobody'}
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     axios.get(queryUrl).then(
         function (response) {
             // console.log(response);
-            const check = response.data.Ratings[0].Value; //checking for this value throws an error if movie does not exist (moves to catch); title and year just return undefined
+            response.data.Ratings[0].Value; //checking for this value throws an error if movie does not exist (moves to catch); title and year just return undefined
             console.log('Title: ' + response.data.Title);
             console.log('Release year: ' + response.data.Year);
             console.log('IMDB Rating: ' + response.data.Ratings[0].Value)
