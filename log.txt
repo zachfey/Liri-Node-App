@@ -1,0 +1,62 @@
+do-what-it-says undefined
+{
+  "Artist": "Backstreet Boys",
+  "Song": "I Want It That Way",
+  "Album": "The Hits--Chapter One",
+  "Preview": "https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+concert-this Sublime with Rome
+{
+  "venue": "Days on the Green Festival (April 19-20)",
+  "city": "Phoenix, AZ",
+  "date": "04/20/19"
+}
+{
+  "venue": "Bunbury Music Festival",
+  "city": "Cincinnati, OH",
+  "date": "06/01/19"
+}
+{
+  "venue": "Grossinger Motors Arena",
+  "city": "Bloomington, IL",
+  "date": "06/05/19"
+}
+{
+  "venue": "McGrath Amphitheatre",
+  "city": "Cedar Rapids, IA",
+  "date": "06/02/19"
+}
+{
+  "venue": "SumTur Amphitheater",
+  "city": "Papillion, NE",
+  "date": "06/06/19"
+}
+spotify-this-song undefined
+{
+  "Artist": "Ace of Base",
+  "Song": "The Sign",
+  "Album": "The Sign (US Album) [Remastered]",
+  "Preview": "https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+spotify-this-song piano man
+{
+  "Artist": "Billy Joel",
+  "Song": "Piano Man",
+  "Album": "The Essential Billy Joel",
+  "Preview": "https://p.scdn.co/mp3-preview/46573cb026c2307864ab50ac1a29fcd30307ad35?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+movie-this The Shining
+movie-this undefined
+movie-this The Shining
+movie-this The Shining
+movie-this The Shining
+{
+  "Title": "The Shining",
+  "ReleaseYear": "1980",
+  "IMDBRating": "8.4/10",
+  "RTRating": "86%",
+  "Country": "UK, USA",
+  "Language": "English",
+  "Plot": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+  "Actors": "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers"
+}

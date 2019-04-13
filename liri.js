@@ -4,7 +4,7 @@ var Spotify = require('node-spotify-api') //requries the spotify API
 var spotify = new Spotify(keys.spotify); //creates a new Spotify object using the keys in the above file
 var axios = require('axios') //used for the omdb and bandsInTown APIs
 var moment = require('moment'); //used to convert the concert date from badnsInTown API
-var fs = require('fs'); //used to read random.txt in do-what-it-says command
+var fs = require('fs'); //used to read random.txt in do-what-it-says command and to append log.txt
 
 ///////////////////////Function declarations///////////////////////////////////////////////
 var bandsInTown = function (artist) {
@@ -25,6 +25,10 @@ var bandsInTown = function (artist) {
                 }
                 // console.log(JSON.stringify(tourInfo,null,2));
                 console.table(tourInfo);
+                fs.appendFile('log.txt', JSON.stringify(tourInfo, null, 2) + '\n', function(err){
+                    if(err){console.log('log failed... check log.txt location')}
+                    else{console.log('result logged!')}
+                });
             }
         }
     ).catch(function(err){
@@ -39,11 +43,11 @@ var spotifyLookup = function (track) {
         query: track
     }, function (err, data) {
         if (err) { //default to The Sign by Ace of Base
-            spotifyLookup('The Sign Ace of Base')
-            // console.log('artist: Ace of Base')
-            // console.log('song: The Sign')
-            // console.log('album: The Sign (US Album) [Remastered]')
-            // console.log('preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982')
+            // spotifyLookup('The Sign Ace of Base')
+            console.log('artist: Ace of Base')
+            console.log('song: The Sign')
+            console.log('album: The Sign (US Album) [Remastered]')
+            console.log('preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982')
             return console.log('Error occurred: ' + err);
         }
         const returnedSong = {
@@ -54,6 +58,10 @@ var spotifyLookup = function (track) {
         }
         // console.log(JSON.stringify(returnedSong,null,2));
         console.table(returnedSong);
+        fs.appendFile('log.txt', JSON.stringify(returnedSong, null, 2) + '\n', function(err){
+            if(err){console.log('log failed... check log.txt location')}
+            else{console.log('result logged!')}
+        });
 
         // console.log('artist: ' + data.tracks.items[0].artists[0].name);
         // console.log('song: ' + data.tracks.items[0].name);
@@ -64,20 +72,36 @@ var spotifyLookup = function (track) {
 
 var omdbLookup = function (movie) {
     if(!movie){movie = 'Mr. Nobody'}
+    console.log(movie)
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     axios.get(queryUrl).then(
         function (response) {
             // console.log(response);
             response.data.Ratings[0].Value; //checking for this value throws an error if movie does not exist (moves to catch); title and year just return undefined
-            console.log('Title: ' + response.data.Title);
-            console.log('Release year: ' + response.data.Year);
-            console.log('IMDB Rating: ' + response.data.Ratings[0].Value)
-            console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value)
-            console.log('Country: ' + response.data.Country);
-            console.log('Language: ' + response.data.Language);
-            console.log('Plot: ' + response.data.Plot);
-            console.log('Actors: ' + response.data.Actors);
+            var movieResult = {
+                Title: response.data.Title,
+                ReleaseYear: response.data.Year,
+                IMDBRating: response.data.Ratings[0].Value,
+                RTRating: response.data.Ratings[1].Value,
+                Country: response.data.Country,
+                Language: response.data.Language,
+                Plot: response.data.Plot,
+                Actors: response.data.Actors
+            }
+            console.table(movieResult);
+            fs.appendFile('log.txt', JSON.stringify(movieResult, null, 2) + '\n', function(err){
+                if(err){console.log('log failed... check log.txt location')}
+                else{console.log('result logged!')}
+            });
+            // console.log('Title: ' + response.data.Title);
+            // console.log('Release year: ' + response.data.Year);
+            // console.log('IMDB Rating: ' + response.data.Ratings[0].Value)
+            // console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value)
+            // console.log('Country: ' + response.data.Country);
+            // console.log('Language: ' + response.data.Language);
+            // console.log('Plot: ' + response.data.Plot);
+            // console.log('Actors: ' + response.data.Actors);
         }
     ).catch(
         function (err) { //default to Mr. Nobody
@@ -137,7 +161,10 @@ for (let i = 4; i < input.length; i++) {
     arg2 += ' ' + input[i];
 }
 
-// console.log(arg1 + ' ' + arg2);
+fs.appendFile('log.txt', arg1 + ' ' + arg2 + '\n', function(err){
+    if(err){console.log('log failed... check log.txt location')}
+    else{console.log('command logged!')}
+});
 /////////////////////////////End Input Parsing////////////////////////////////////////////
 
 interpret(arg1, arg2)
