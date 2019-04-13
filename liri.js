@@ -23,10 +23,13 @@ var bandsInTown = function (artist) {
                     city: response.data[i].venue.city + ', ' + response.data[i].venue.region,
                     date: moment(response.data[i].datetime).format('MM/DD/YY')
                 }
-                console.log(JSON.stringify(tourInfo,null,2));
+                // console.log(JSON.stringify(tourInfo,null,2));
+                console.table(tourInfo);
             }
         }
-    );
+    ).catch(function(err){
+        console.log('oops: ' + err);
+    })
 }
 
 var spotifyLookup = function (track) {
