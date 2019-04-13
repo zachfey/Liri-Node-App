@@ -47,6 +47,7 @@ var omdbLookup = function (movie) {
     axios.get(queryUrl).then(
         function (response) {
             // console.log(response);
+            const check = response.data.Ratings[0].Value; //checking for this value throws an error if movie does not exist (moves to catch); title and year just return undefined
             console.log('Title: ' + response.data.Title);
             console.log('Release year: ' + response.data.Year);
             console.log('IMDB Rating: ' + response.data.Ratings[0].Value)
@@ -56,8 +57,21 @@ var omdbLookup = function (movie) {
             console.log('Plot: ' + response.data.Plot);
             console.log('Actors: ' + response.data.Actors);
         }
-    );
-}
+    ).catch(
+        function (err){
+            console.log('oops');
+            // omdbLookup('Mr. Nobody');
+            console.log('Title: Mr. Nobody');
+            console.log('Release year: 2009');
+            console.log('IMDB Rating: 7.8/10');
+            console.log('Rotten Tomatoes Rating: 67%')
+            console.log('Country: Belgium, Germany, Canada, France, USA, UK');
+            console.log('Language: English, Mohawk');
+            console.log("Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.");
+            console.log('Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham');
+        }
+    )
+};
 
 const input = process.argv
 
@@ -91,24 +105,8 @@ if (arg1 === 'concert-this') { //TODO: Make this a switch command.
 
 // What Each Command Should Do
 
-// node liri.js movie-this '<movie name here>'
-// This will output the following information to your terminal/bash window:
-//   * Title of the movie.
-//   * Year the movie came out.
-//   * IMDB Rating of the movie.
-//   * Rotten Tomatoes Rating of the movie.
-//   * Country where the movie was produced.
-//   * Language of the movie.
-//   * Plot of the movie.
-//   * Actors in the movie.
 
 // If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
-
-// If you haven't watched "Mr. Nobody," then you should: http://www.imdb.com/title/tt0485947/
-
-// You'll use the axios package to retrieve data from the OMDB API. Like all of the in-class activities, the OMDB API requires an API key. You may use trilogy.
-
-
 
 
 // node liri.js do-what-it-says
