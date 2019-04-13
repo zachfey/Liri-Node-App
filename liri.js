@@ -6,6 +6,7 @@ var spotify = new Spotify(keys.spotify);
 var moment = require('moment');
 var fs = require('fs');
 
+///////////////////////Function declarations///////////////////////////////////////////////
 var bandsInTown = function (artist) {
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
     console.log(queryUrl);
@@ -75,9 +76,6 @@ var omdbLookup = function (movie) {
 };
 
 var interpret = function (arg1, arg2) {
-
-
-
     if (arg1 === 'concert-this') { //TODO: Make this a switch command.
         console.log('bands in towning.....')
         bandsInTown(arg2);
@@ -95,17 +93,22 @@ var interpret = function (arg1, arg2) {
         console.log(fs.readFile('random.txt', 'utf8', function (err, data) {
             if (err) {
                 return console.log('oops')
-            } else
-                arg1 = data.split(',')[0];
-                arg2 = data.split(',')[1];
+            } else {
+                const splitData = data.split(',');
+                // console.log(splitData)
+                arg1 = splitData[0];
+                arg2 = splitData[1].split('"')[1];
                 interpret(arg1, arg2);
+            }
         }));
     } else {
-
+        console.log('Invalid input. Try: concert-this, spotify-this-song, movie-this, or do-what-it-says')
     }
 }
 
+///////////////////////////////End function Declarations///////////////////////////////////////
 
+///////////////////////////////Input parsing////////////////////////////////////////////
 const input = process.argv
 
 let arg1 = input[2]
@@ -115,7 +118,7 @@ for (let i = 4; i < input.length; i++) {
 }
 
 console.log(arg1 + ' ' + arg2);
-
+/////////////////////////////End Input Parsing////////////////////////////////////////////
 
 interpret(arg1, arg2)
 
