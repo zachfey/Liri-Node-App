@@ -60,3 +60,55 @@ movie-this The Shining
   "Plot": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
   "Actors": "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers"
 }
+concert-this metallica
+{
+  "venue": "Estadio do Restelo",
+  "city": "Lisbon, ",
+  "date": "05/01/19"
+}
+{
+  "venue": "Valdebebas - IFEMA",
+  "city": "Madrid, ",
+  "date": "05/03/19"
+}
+{
+  "venue": "Milano Summer Festival - Ippodromo Snai - San Siro",
+  "city": "Milano, ",
+  "date": "05/08/19"
+}
+{
+  "venue": "Estadi Olímpic Lluís Companys",
+  "city": "Barcelona, ",
+  "date": "05/05/19"
+}
+{
+  "venue": "Stadion Letzigrund",
+  "city": "Zürich, ",
+  "date": "05/10/19"
+}
+concert-this john mayer
+{
+  "venue": "Dead & Company",
+  "city": "Mountain View, CA",
+  "date": "05/31/19"
+}
+{
+  "venue": "Dead & Company",
+  "city": "Mountain View, CA",
+  "date": "06/01/19"
+}
+{
+  "venue": "Dead & Company",
+  "city": "Quincy, WA",
+  "date": "06/07/19"
+}
+{
+  "venue": "Dead & Company",
+  "city": "Los Angeles, CA",
+  "date": "06/03/19"
+}
+{
+  "venue": "Dead & Company",
+  "city": "Los Angeles, CA",
+  "date": "06/04/19"
+}

@@ -156,10 +156,7 @@ var interpret = function (arg1, arg2) {
 const input = process.argv //takes in all command line arguments
 
 let arg1 = input[2] // the first command line argument
-let arg2 = input[3] //initialize the variable used in the for loop for the rest of hte command line arguments
-for (let i = 4; i < input.length; i++) {
-    arg2 += ' ' + input[i];
-}
+let arg2 = input.slice(3).join(' ');
 
 fs.appendFile('log.txt', arg1 + ' ' + arg2 + '\n', function(err){
     if(err){console.log('log failed... check log.txt location')}
