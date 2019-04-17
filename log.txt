@@ -46,10 +46,6 @@ spotify-this-song piano man
   "Preview": "https://p.scdn.co/mp3-preview/46573cb026c2307864ab50ac1a29fcd30307ad35?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
 }
 movie-this The Shining
-movie-this undefined
-movie-this The Shining
-movie-this The Shining
-movie-this The Shining
 {
   "Title": "The Shining",
   "ReleaseYear": "1980",
@@ -111,4 +107,125 @@ concert-this john mayer
   "venue": "Dead & Company",
   "city": "Los Angeles, CA",
   "date": "06/04/19"
+}
+concert-this Metallica
+{
+  "venue": "Estadio do Restelo",
+  "city": "Lisbon, ",
+  "date": "05/01/19"
+}
+{
+  "venue": "Estadi Olímpic Lluís Companys",
+  "city": "Barcelona, ",
+  "date": "05/05/19"
+}
+{
+  "venue": "Stadion Letzigrund",
+  "city": "Zürich, ",
+  "date": "05/10/19"
+}
+{
+  "venue": "Milano Summer Festival - Ippodromo Snai - San Siro",
+  "city": "Milano, ",
+  "date": "05/08/19"
+}
+{
+  "venue": "Valdebebas - IFEMA",
+  "city": "Madrid, ",
+  "date": "05/03/19"
+}
+concer-this f8eh
+concert-this gibberish0878ht
+concert-this 
+concert-this Sublime with Rome
+{
+  "venue": "Days on the Green Festival (April 19-20)",
+  "city": "Phoenix, AZ",
+  "date": "04/20/19"
+}
+{
+  "venue": "Grossinger Motors Arena",
+  "city": "Bloomington, IL",
+  "date": "06/05/19"
+}
+{
+  "venue": "SumTur Amphitheater",
+  "city": "Papillion, NE",
+  "date": "06/06/19"
+}
+{
+  "venue": "Bunbury Music Festival",
+  "city": "Cincinnati, OH",
+  "date": "06/01/19"
+}
+{
+  "venue": "McGrath Amphitheatre",
+  "city": "Cedar Rapids, IA",
+  "date": "06/02/19"
+}
+spotify-this feels calvin harris
+spotify-this-song feels calvin harris
+{
+  "Artist": "Calvin Harris",
+  "Song": "Feels (feat. Pharrell Williams, Katy Perry & Big Sean)",
+  "Album": "Funk Wav Bounces Vol.1",
+  "Preview": "https://p.scdn.co/mp3-preview/0c58b32cdd0231ce4dc3cc2fe63a71046fd9f586?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+spotify-this-song badda bing with a pipe
+spotify this song piano man
+spotify-this-song piano man
+{
+  "Artist": "Billy Joel",
+  "Song": "Piano Man",
+  "Album": "The Essential Billy Joel",
+  "Preview": "https://p.scdn.co/mp3-preview/46573cb026c2307864ab50ac1a29fcd30307ad35?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+spotify-this-song 
+{
+  "Artist": "Ace of Base",
+  "Song": "The Sign",
+  "Album": "The Sign (US Album) [Remastered]",
+  "Preview": "https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
+}
+spotify-this-song gibberishpaoif387
+movie-this the shining
+{
+  "Title": "The Shining",
+  "ReleaseYear": "1980",
+  "IMDBRating": "8.4/10",
+  "RTRating": "86%",
+  "Country": "UK, USA",
+  "Language": "English",
+  "Plot": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+  "Actors": "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers"
+}
+movie-this toy story
+{
+  "Title": "Toy Story",
+  "ReleaseYear": "1995",
+  "IMDBRating": "8.3/10",
+  "RTRating": "100%",
+  "Country": "USA",
+  "Language": "English",
+  "Plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+  "Actors": "Tom Hanks, Tim Allen, Don Rickles, Jim Varney"
+}
+movie-this 
+{
+  "Title": "Mr. Nobody",
+  "ReleaseYear": "2009",
+  "IMDBRating": "7.8/10",
+  "RTRating": "67%",
+  "Country": "Belgium, Germany, Canada, France, USA, UK",
+  "Language": "English, Mohawk",
+  "Plot": "A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.",
+  "Actors": "Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham"
+}
+movie-this gibberisho8u8357
+do-what-it-says 
+{
+  "Artist": "Backstreet Boys",
+  "Song": "I Want It That Way",
+  "Album": "The Hits--Chapter One",
+  "Preview": "https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=2c2e8f7e8eec4deca2d30b5e6ab2c982"
 }
